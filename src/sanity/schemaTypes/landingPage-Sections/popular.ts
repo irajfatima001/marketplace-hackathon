@@ -1,4 +1,4 @@
-export default {
+ const popular={
     title: "Popular",
     name: "popular",
     type: "object",
@@ -42,3 +42,4 @@ export default {
       },
     ],
   };
+  export default popular

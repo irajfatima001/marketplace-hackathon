@@ -1,4 +1,4 @@
-export default {
+ const hero = {
     title: "Hero",
     name: "hero",
     type: "object",
@@ -9,3 +9,4 @@ export default {
        {title: "Button Text", name:'heroBtnText', type: 'string'}
     ]
 }
+export default hero

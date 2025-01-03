@@ -1,4 +1,4 @@
-export default {
+ const main={
     title: "Main",
     name: "main",
     type: "object",
@@ -61,4 +61,4 @@ export default {
       },
     ],
   };
-  
+  export default main

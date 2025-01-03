@@ -1,4 +1,4 @@
-export default {
+ const studio ={
     title: "Studio",
     name: "studio",
     type: "object",
@@ -10,3 +10,4 @@ export default {
        {title: "Studio Button Text", name:'studioBtnText', type: 'string'}
     ]
 }
+export default studio

@@ -1,6 +1,6 @@
- const productPage= {
-    title: "Product Page",
-    name: "productPage",
+const aboutPage= {
+    title: "About Page",
+    name: "aboutPage",
     type: "document",
     fields: [
         {
@@ -8,11 +8,11 @@
            name: "sections" ,
            type: "array",
            of: [
-            {type: "main"},
+            {type: "about"},
             
 
            ] 
         }
     ]
 }
-export default productPage
+export default aboutPage

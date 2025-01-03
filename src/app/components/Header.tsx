@@ -1,4 +1,5 @@
-"use client"
+
+"use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { IoSearch } from "react-icons/io5";
@@ -9,9 +10,9 @@ import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Close the menu when the component mounts (for example, on Cart page load)
+  // Close menu on page load
   useEffect(() => {
-    setIsMenuOpen(false); // Ensure menu is closed on page load
+    setIsMenuOpen(false);
   }, []);
 
   return (
@@ -22,32 +23,52 @@ const Header = () => {
           {/* Logo Section */}
           <h1 className="text-[#22202E] text-2xl font-semibold">Avion</h1>
 
-          {/* Desktop Links Section */}
+          {/* Desktop Links */}
           <ul className="hidden lg:flex gap-4 ml-auto">
-            <Link href="/">Home</Link>
-            <Link href="/product">Products</Link>
-            <Link href="/productlist">Listings</Link>
-            <Link href="/cart">Shopping</Link>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/about">About</Link>
+            </li>
+            <li>
+              <Link href="/product">Products</Link>
+            </li>
+            <li>
+              <Link href="/productlist">Listings</Link>
+            </li>
+            <li>
+              <Link href="/shopping">Shopping</Link>
+            </li>
           </ul>
 
           {/* Icons Section */}
-          <div className="flex text-xl gap-3 ml-3">
-            <IoSearch className="text-xl" />
+          <div className="flex items-center text-xl gap-3 ml-3">
+            <IoSearch className="cursor-pointer" />
             <MdOutlineShoppingCart />
             <CgProfile />
-            {/* Hamburger Menu Button for Mobile */}
+            {/* Hamburger Menu for Mobile */}
             <button
-              className="lg:hidden text-2xl"
+              className="lg:hidden text-3xl"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle Menu"
             >
               {isMenuOpen ? <HiX /> : <HiOutlineMenuAlt3 />}
             </button>
           </div>
         </div>
 
-        {/* Navigation Section */}
+        {/* Desktop Category Navigation */}
         <nav className="hidden lg:flex w-[675px] justify-between items-center h-1/2 text-[#726E8D]">
-          {["Plant pots", "Ceramics", "Tables", "Chairs", "Crockery", "Tableware", "Cutlery"].map((item, index) => (
+          {[
+            "Plant pots",
+            "Ceramics",
+            "Tables",
+            "Chairs",
+            "Crockery",
+            "Tableware",
+            "Cutlery",
+          ].map((item, index) => (
             <Link
               key={index}
               href="/"
@@ -59,53 +80,77 @@ const Header = () => {
         </nav>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Sliding Menu */}
       <div
-        className={`fixed top-0 right-0 h-full bg-white w-[75%] max-w-[300px] shadow-lg z-50 transform ${
+        className={`fixed top-0 right-0 h-full w-[75%] max-w-[300px] bg-[#2A254B] text-white z-50 transform transition-transform duration-300 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out`}
+        }`}
       >
+        {/* Close Button */}
         <button
-          className="absolute top-5 right-5 text-2xl"
+          className="text-white text-3xl absolute top-5 right-5"
           onClick={() => setIsMenuOpen(false)}
+          aria-label="Close Menu"
         >
-          <HiX />
+          ×
         </button>
-        <ul className="mt-16 flex flex-col gap-6 px-6 text-[#22202E]">
-          <Link href="/" onClick={() => setIsMenuOpen(false)}>
-            Home
-          </Link>
-          <Link href="/product" onClick={() => setIsMenuOpen(false)}>
-            Products
-          </Link>
-          <Link href="/productlist" onClick={() => setIsMenuOpen(false)}>
-            Listings
-          </Link>
-          <Link href="/cart" onClick={() => setIsMenuOpen(false)}>
-            Shopping
-          </Link>
-          {["Plant pots", "Ceramics", "Tables", "Chairs", "Crockery", "Tableware", "Cutlery"].map((item, index) => (
-            <Link
-              key={index}
-              href="/"
-              onClick={() => setIsMenuOpen(false)}
-              className="hover:text-[#5a526c] border-b-2 border-transparent hover:border-[#5a526c] pb-1"
-            >
-              {item}
+
+        {/* Mobile Links */}
+        <ul className="flex flex-col items-start gap-6 mt-20 px-6">
+          <li>
+            <Link href="/" onClick={() => setIsMenuOpen(false)}>
+              Home
             </Link>
+          </li>
+          <li>
+            <Link href="/about" onClick={() => setIsMenuOpen(false)}>
+              About
+            </Link>
+          </li>
+          <li>
+            <Link href="/product" onClick={() => setIsMenuOpen(false)}>
+              Products
+            </Link>
+          </li>
+          <li>
+            <Link href="/productlist" onClick={() => setIsMenuOpen(false)}>
+              Listings
+            </Link>
+          </li>
+          <li>
+            <Link href="/shopping" onClick={() => setIsMenuOpen(false)}>
+              Shopping
+            </Link>
+          </li>
+          {/* Categories */}
+          {[
+            "Plant pots",
+            "Ceramics",
+            "Tables",
+            "Chairs",
+            "Crockery",
+            "Tableware",
+            "Cutlery",
+          ].map((item, index) => (
+            <li key={index}>
+              <Link href="/" onClick={() => setIsMenuOpen(false)}>
+                {item}
+              </Link>
+            </li>
           ))}
         </ul>
       </div>
 
-      {/* Overlay for Background */}
+      {/* Background Overlay */}
       {isMenuOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40"
           onClick={() => setIsMenuOpen(false)}
-        />
+        ></div>
       )}
     </>
   );
 };
 
 export default Header;
+

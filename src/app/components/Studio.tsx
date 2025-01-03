@@ -42,6 +42,7 @@ export default async function Studio() {
             />
           </div>
         </div>
+        
       </main>
     </div>
   );

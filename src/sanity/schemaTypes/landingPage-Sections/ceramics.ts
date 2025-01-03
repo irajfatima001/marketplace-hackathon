@@ -1,4 +1,4 @@
-export default {
+ const ceramics = {
   title: "Ceramics",
   name: "ceramics",
   type: "object",
@@ -42,3 +42,4 @@ export default {
     },
   ],
 };
+export default ceramics

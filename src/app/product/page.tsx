@@ -211,7 +211,7 @@ export default async function Product() {
     <>
       <div className="max-w-[1440px] bg-white text-[#2A254B]">
         {/* Banner Image */}
-        <div className="max-w-full h-[209px] mt-0 pt-0">
+        <div className="max-w-full h-[209px] mt-0 pt-0 ">
           <Image
             src={mainImg}
             alt="Full-Width Banner"
@@ -222,19 +222,22 @@ export default async function Product() {
         </div>
 
         {/* Filters and Sort Section */}
-        <div className="flex justify-between items-center px-8 py-4 bg-white max-w-full">
-          {/* Filters */}
-          <div className="flex gap-4 sm:gap-6 md:gap-10">
+        <div className="flex flex-wrap justify-between items-center px-6 py-4 bg-white max-w-full gap-4 sm:gap-6">
+          {/* Filters Section */}
+          <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-10 w-full sm:w-auto justify-start sm:justify-start">
             {["Category", "Product Type", "Price", "Brand"].map((filter) => (
-              <div key={filter} className="flex items-center gap-2 cursor-pointer">
+              <div
+                key={filter}
+                className="flex items-center gap-2 cursor-pointer"
+              >
                 <span className="text-[#2A254B] font-thin">{filter}</span>
                 <IoMdArrowDropdown />
               </div>
             ))}
           </div>
 
-          {/* Sort and Date Edit */}
-          <div className="flex gap-4 sm:gap-6 md:gap-8">
+          {/* Sort and Date Edit Section */}
+          <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-8 w-full sm:w-auto justify-end sm:justify-start">
             <div className="flex items-center gap-2 cursor-pointer">
               <span className="text-[#2A254B] font-thin">Sort By:</span>
             </div>
@@ -244,12 +247,14 @@ export default async function Product() {
             </div>
           </div>
         </div>
-
         {/* Product Cards */}
         <div className="container max-w-full px-6 sm:px-12 md:px-16 lg:px-32 mb-6">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {productCards?.map((product: any) => (
-              <div key={product.productCardId} className="text-center w-full sm:mb-8 lg:mb-10">
+              <div
+                key={product.productCardId}
+                className="text-center w-full sm:mb-8 lg:mb-10"
+              >
                 <Link href={`/product/${product.productCardId}`}>
                   <div>
                     <Image
@@ -259,8 +264,12 @@ export default async function Product() {
                       height={280}
                       className="mb-4 mx-auto cursor-pointer"
                     />
-                    <h3 className="text-lg text-start">{product.productCardHeading}</h3>
-                    <p className="text-[#2A254B] text-start">£{product.productCardPrice}</p>
+                    <h3 className="text-lg text-start">
+                      {product.productCardHeading}
+                    </h3>
+                    <p className="text-[#2A254B] text-start">
+                      £{product.productCardPrice}
+                    </p>
                   </div>
                 </Link>
               </div>
@@ -278,4 +287,3 @@ export default async function Product() {
     </>
   );
 }
-
