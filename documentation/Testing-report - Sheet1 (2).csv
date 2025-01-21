@@ -1,0 +1,12 @@
+Test Case ID,Description,Steps,Expected Result,Actual Result,Status,Severity,Assigned To,Remarks
+TC001,Verify product listing displays correctly,"Open marketplace, check product listings",All products displayed accurately,Products displayed as expected,Passed,Low,-,Test successful
+TC002,Test search functionality,Search for a specific product,Relevant products displayed,"Search results match query, but slight error in results",Failed,Medium,-,"Search function not fully accurate, requires improvement"
+TC003,Validate cart operations,"Add, update, and remove items from cart",Cart updates correctly,Cart operations functioning,Passed,High,-,Cart operations working well
+TC004,Check dynamic routing for product pages,Click on product to open detailed page,Product detail pages load correctly,Pages load without errors,Passed,Low,-,No issues found
+TC005,Test error handling for API failures,Simulate API failure and check error handling,Error message displayed properly,"Error messages displayed, fallback UI is shown",Passed,High,-,Implemented fallback UI successfully
+TC006,Performance optimization for load time,Measure page load time,Page load time under 3 seconds,Page load time measured at 3.2 seconds,Failed,Medium,-,Performance improvement needed
+TC007,Cross-browser testing on Chrome and Firefox,"Test on Chrome, Firefox",Consistent rendering and functionality,Rendering consistent across both browsers,Passed,Medium,-,No issues found
+TC008,Device testing on physical mobile device,Test on mobile device,Correct display and functionality on mobile,Functionality working as expected,Passed,Medium,-,Responsive design verified
+TC009,API communication over HTTPS,Verify API communication is secure,API calls made over HTTPS,API calls are over HTTP instead of HTTPS,Failed,Critical,-,API communication needs to be secured
+TC010,Simulate user interactions for UAT,"Simulate browsing, adding items to cart, checkout",All workflows are intuitive and error-free,All workflows function smoothly without errors,Passed,Low,-,UAT completed successfully
+TC011,Update documentation for testing results,"Ensure all test cases, results, and fixes are documented",All steps and results clearly documented,Documentation is complete and well-structured,Passed,Low,-,Documentation updated successfully

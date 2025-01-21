@@ -1,5 +1,7 @@
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 // const products = [
 //   {
@@ -152,6 +154,18 @@ export default async function ProductDetail({
     { id: params.id }
   );
 
+  // const [wishlist, setWishlist] = useState([]);
+
+  // const toggleWishlist = () => {
+  //   if (wishlist.some(item => item.id === product.productCardId)) {
+  //     setWishlist(wishlist.filter(item => item.id !== product.productCardId));
+  //   } else {
+  //     setWishlist([...wishlist, product]);
+  //   }
+  // };
+
+  // const isInWishlist = wishlist.some(item => item.id === product.productCardId);
+
   // Handle case when product is not found
   if (!product) {
     return <div className="max-w-[1440px] mx-auto p-6">Product not found</div>;
@@ -179,13 +193,11 @@ export default async function ProductDetail({
           <p className="text-xl font-semibold text-[#2A254B] mb-6">
             £{product.productCardPrice}
           </p>
-
           {/* Description */}
           <h2 className="text-lg font-medium mb-2">Description</h2>
           <p className="text-gray-700 mb-6">
             {product.description || "No description available."}
           </p>
-
           {/* Features */}
           {product.features && (
             <>
@@ -197,7 +209,6 @@ export default async function ProductDetail({
               </ul>
             </>
           )}
-
           {/* Dimensions */}
           {product.dimensions && (
             <>
@@ -224,21 +235,55 @@ export default async function ProductDetail({
               </div>
             </>
           )}
-
           {/* Quantity Selector */}
           <div className="flex items-center justify-between gap-4 mb-6">
-  <div className="flex items-center gap-4">
-    <p className="text-gray-600">Amount:</p>
-    <div className="flex items-center border border-gray-300 rounded-md">
-      <button className="px-3 py-1 text-gray-700">-</button>
-      <p className="px-4">1</p>
-      <button className="px-3 py-1 text-gray-700">+</button>
-    </div>
-  </div>
-  
-  <button className="bg-[#2A254B] text-white px-6 py-2  hover:bg-[#1d1a36]">
-    Add to Cart
-  </button>
+            <div className="flex items-center gap-4">
+              <p className="text-gray-600">Amount:</p>
+              <div className="flex items-center border border-gray-300 rounded-md">
+                <button className="px-3 py-1 text-gray-700">-</button>
+                <p className="px-4">1</p>
+                <button className="px-3 py-1 text-gray-700">+</button>
+              </div>
+            </div>
+</div>
+            {/* <button className="bg-[#2A254B] text-white px-6 py-2  hover:bg-[#1d1a36]">
+              Add to Cart
+
+            </button> */}
+            <div className="mt-20 flex justify-between gap-4">
+  {/* Add to Cart Button */}
+  <Link
+    href={{
+      pathname: "/cart",
+      query: {
+        name: product.productCardHeading,
+        price: product.productCardPrice,
+        image: product.productCardImage,
+        description: product.description || "No description available.",
+      },
+    }}
+  >
+    <button className="bg-[#2A254B] text-white px-8 py-2  hover:bg-[#1d1a36]">
+      Add to Cart
+    </button>
+  </Link>
+
+  {/* Add to Wishlist Button */}
+  <Link
+    href={{
+      pathname: "/wishlist",
+      query: {
+        name: product.productCardHeading,
+        price: product.productCardPrice,
+        image: product.productCardImage,
+        description: product.description || "No description available.",
+      },
+    }}
+  >
+    <button className="bg-[#2A254B] text-white px-8 py-2  hover:bg-[#1d1a36]">
+      Add to Wishlist
+    </button>
+  </Link>
 </div>
 
         </div>

@@ -1,5 +1,6 @@
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function PopularProducts() {
   // Fetching data from Sanity
@@ -61,9 +62,10 @@ export default async function PopularProducts() {
 
         {/* View Collection Button */}
         <div className="text-center mt-8">
+          <Link href="/product">
           <button className="px-6 py-3 bg-gray-100 text-[#2A254B] font-semibold rounded-lg shadow-md hover:bg-gray-200">
             {res.popularSectionButton}
-          </button>
+          </button></Link>
         </div>
       </div>
     </div>

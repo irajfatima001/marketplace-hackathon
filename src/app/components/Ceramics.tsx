@@ -1,5 +1,6 @@
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
+import Link from "next/link";
 type Product={
   title: string;
   name: string;
@@ -50,9 +51,10 @@ export default async function ProductShowcase() {
 
         {/* View Collection Button */}
         <div className="text-center mt-8">
+          <Link href="/product">
           <button className="px-6 py-3 bg-gray-100 text-[#2A254B] font-semibold rounded-lg shadow-md hover:bg-gray-200">
             {res.ceramicSectionButton}
-          </button>
+          </button></Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home() {
 
@@ -23,9 +24,10 @@ export default async function Home() {
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-thin text-white mb-4 leading-snug sm:leading-relaxed">
               {heroHeading}
             </h1>
+            <Link href="/product">
             <button className="mt-4 bg-[#f9f9f9] bg-opacity-15 hover:bg-blue-700 text-white font-thin py-2 px-6  focus:outline-none focus:shadow-outline">
               {heroBtnText}
-            </button>
+            </button></Link>
           </div>
 
           {/* Description Section */}
